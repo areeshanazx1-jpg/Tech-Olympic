@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Safety Guidelines - Emergency Help Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background: linear-gradient(to right, #1e40af, #3b82f6) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            position: relative;
+            margin-left: 15px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #fff;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85), rgba(59, 130, 246, 0.85)),
+                        url('https://images.unsplash.com/photo-1576091160550-112173e7f319?w=1600&auto=format&fit=crop&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 100px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: slideInUp 0.8s ease-out 0.2s backwards;
+            line-height: 1.6;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+            color: #1e40af;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            border-radius: 2px;
+        }
+
+        /* ===== GUIDELINE CARDS ===== */
+        .guideline-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #1e40af;
+        }
+
+        .guideline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+        }
+
+        .guideline-card h4 {
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .guideline-card i {
+            font-size: 2rem;
+            color: #3b82f6;
+        }
+
+        .guideline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 8px;
+            border-left: 3px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .guideline-item:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, #f0f4ff 0%, #fff 100%);
+        }
+
+        .guideline-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 45px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .guideline-content h6 {
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .guideline-content p {
+            color: #555;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* ===== TIPS SECTION ===== */
+        .tips-section {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .tips-section h3 {
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .tip-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #fff;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .tip-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+
+        .tip-item strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .tip-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            color: white;
+            margin-top: 4rem;
+            padding: 3rem 1rem 1.5rem;
+        }
+
+        footer h6 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.4);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .guideline-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .guideline-number {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html">
+            <img src="https://images.unsplash.com/photo-1631053745666-5f3d88db46cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGVtZXJnZW5jeXxlbnwwfHwwfHx8MA%3D%3D" 
+                 alt="Logo" class="navbar-logo me-2">
+            Emergency Help Portal
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link active" href="safety.html">Safety Guidelines</a></li>
+               
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+    <div class="container">
+        <h1>Safety Guidelines</h1>
+        <p>Comprehensive safety guidelines and emergency response procedures to help you stay prepared and safe.</p>
+    </div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="container py-5">
+    <h2 class="section-title">Emergency Response Guidelines</h2>
+
+    <div class="row">
+        <!-- Medical Emergencies -->
+        <div class="col-lg-6" data-aos="fade-up">
+            <div class="guideline-card">
+                <h4><i class="fas fa-ambulance"></i> Medical Emergencies</h4>
+                
+                <div class="guideline-item">
+                    <div class="guideline-number">1</div>
+                    <div class="guideline-content">
+                        <h6>Call Emergency Services</h6>
+                        <p>Immediately call 102 for ambulance. Provide your location, nature of injury, and number of people affected.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">2</div>
+                    <div class="guideline-content">
+                        <h6>Keep Patient Calm & Still</h6>
+                        <p>Avoid moving the patient unless in immediate danger. Movement can worsen injuries, especially spinal injuries.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">3</div>
+                    <div class="guideline-content">
+                        <h6>Monitor Vital Signs</h6>
+                        <p>Check consciousness, breathing, and pulse. Be prepared to perform CPR if needed until help arrives.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">4</div>
+                    <div class="guideline-content">
+                        <h6>Provide Information</h6>
+                        <p>When paramedics arrive, inform them about symptoms, allergies, medications, and medical conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fire & Safety -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="guideline-card">
+                <h4><i class="fas fa-fire-extinguisher"></i> Fire & Safety Emergencies</h4>
+                
+                <div class="guideline-item">
+                    <div class="guideline-number">1</div>
+                    <div class="guideline-content">
+                        <h6>Evacuate Immediately</h6>
+                        <p>Leave the area as quickly as possible. Use stairs, never elevators. Close doors behind you to slow fire spread.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">2</div>
+                    <div class="guideline-content">
+                        <h6>Alert Others</h6>
+                        <p>Warn people in the vicinity. Use fire alarms, sirens, or shout loudly to inform everyone of the danger.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">3</div>
+                    <div class="guideline-content">
+                        <h6>Call Fire Brigade</h6>
+                        <p>Call 101 from a safe location. Provide exact address, type of emergency, and any people in danger.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">4</div>
+                    <div class="guideline-content">
+                        <h6>Crawl Under Smoke</h6>
+                        <p>Smoke rises. Crawl on hands and knees where air is clearer. Cover nose and mouth with cloth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Crime & Security -->
+        <div class="col-lg-6" data-aos="fade-up">
+            <div class="guideline-card">
+                <h4><i class="fas fa-shield-alt"></i> Crime & Security Emergencies</h4>
+                
+                <div class="guideline-item">
+                    <div class="guideline-number">1</div>
+                    <div class="guideline-content">
+                        <h6>Contact Police</h6>
+                        <p>Call 100 immediately. Report location, nature of crime, and suspect descriptions if safe to do so.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">2</div>
+                    <div class="guideline-content">
+                        <h6>Prioritize Safety</h6>
+                        <p>Your safety is the priority. Move to a public place if possible. Don't confront criminals.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">3</div>
+                    <div class="guideline-content">
+                        <h6>Provide Details</h6>
+                        <p>Share all information with police: suspect descriptions, vehicle details, weapons, and victims involved.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">4</div>
+                    <div class="guideline-content">
+                        <h6>Don't Interfere</h6>
+                        <p>Wait for authorities. Interference can escalate situations and put you in danger.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mental Health -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="guideline-card">
+                <h4><i class="fas fa-heart-pulse"></i> Mental Health & Support</h4>
+                
+                <div class="guideline-item">
+                    <div class="guideline-number">1</div>
+                    <div class="guideline-content">
+                        <h6>Reach Out for Help</h6>
+                        <p>If struggling, don't hesitate to contact mental health helplines and support services.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">2</div>
+                    <div class="guideline-content">
+                        <h6>Listen Without Judgment</h6>
+                        <p>If someone confides in you, listen carefully and encourage them to seek professional help.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">3</div>
+                    <div class="guideline-content">
+                        <h6>Seek Professional Help</h6>
+                        <p>Mental health is important. Consult psychiatrists, therapists, or counselors for support.</p>
+                    </div>
+                </div>
+
+                <div class="guideline-item">
+                    <div class="guideline-number">4</div>
+                    <div class="guideline-content">
+                        <h6>Suicide Prevention Hotline</h6>
+                        <p>Call 9152987821 for confidential support. Trained counselors are available 24/7 to help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Important Tips -->
+    <div class="tips-section" data-aos="zoom-in">
+        <div class="container">
+            <h3 class="text-center mb-4"><i class="fas fa-lightbulb"></i> Important Safety Tips</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tip-item">
+                        <strong>Know Your Location</strong>
+                        <p>Always be aware of your address and nearby landmarks. This helps emergency services locate you quickly.</p>
+                    </div>
+                    <div class="tip-item">
+                        <strong>Save Emergency Numbers</strong>
+                        <p>Keep emergency contact numbers readily available in your phone and write them down.</p>
+                    </div>
+                    <div class="tip-item">
+                        <strong>Learn Basic First Aid</strong>
+                        <p>Take a first aid course. CPR and basic wound care can save lives in emergencies.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tip-item">
+                        <strong>Stay Calm Under Pressure</strong>
+                        <p>Take deep breaths and remain focused. Panic can lead to poor decisions and increased danger.</p>
+                    </div>
+                    <div class="tip-item">
+                        <strong>Create an Emergency Plan</strong>
+                        <p>Prepare with family or friends. Identify safe locations and communication methods in advance.</p>
+                    </div>
+                    <div class="tip-item">
+                        <strong>Regular Safety Checks</strong>
+                        <p>Periodically review your safety measures and update emergency contact information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <!-- Quick Links -->
+            <div class="col-md-3">
+                <h6><i class="fas fa-link"></i> Quick Links</h6>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="safety.html">Safety Guidelines</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Emergency Numbers -->
+            <div class="col-md-3">
+                <h6><i class="fas fa-phone"></i> Emergency Numbers</h6>
+                <ul>
+                    <li>Ambulance: <strong>102</strong></li>
+                    <li>Fire Brigade: <strong>101</strong></li>
+                    <li>Police: <strong>100</strong></li>
+                    <li>Mental Health: <strong>9152987821</strong></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div class="col-md-3">
+                <h6><i class="fas fa-heart"></i> Support</h6>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div class="col-md-3">
+                <h6><i class="fas fa-share"></i> Follow Us</h6>
+                <div class="footer-social">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-divider">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2026 Emergency Services Portal. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Built with <i class="fas fa-heart" style="color: #ffcccc;"></i> for your safety</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>

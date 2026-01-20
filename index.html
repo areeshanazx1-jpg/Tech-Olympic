@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emergency Help Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+
+
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background: linear-gradient(to right, #1e40af, #3b82f6) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            position: relative;
+            margin-left: 15px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #fff;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* round */
+    border: 2px solid #fff; /* white border */
+    object-fit: cover; /* image cover properly */
+}
+
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background-image: linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), 
+                              url('https://images.unsplash.com/photo-1576091160550-112173e7f319?w=1600&auto=format&fit=crop&q=60');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 20px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom right, rgba(255,255,255,0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-weight: bold;
+            font-weight: 700;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            animation: slideInDown 0.8s ease-out;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            animation: slideInUp 0.8s ease-out 0.2s backwards;
+            line-height: 1.6;
+        }
+
+        .hero .btn {
+            animation: slideInUp 0.8s ease-out 0.4s backwards;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #1a3a8a, #1e40af);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.4);
+        }
+
+        .btn-light {
+            background-color: #fff;
+            color: #1e40af;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background-color: #f0f0f0;
+            color: #1a3a8a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline-light {
+            border: 2px solid #fff;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-color: #fff;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== BUTTON HOVER ===== */
+        .btn {
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+            color: #1e40af;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            border-radius: 2px;
+        }
+
+        /* ===== SERVICE CARDS ===== */
+        .service-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-in-out;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .service-card i {
+            font-size: 50px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card h5 {
+            color: #1e40af;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .service-card strong {
+            color: #b31217;
+            font-size: 1.1rem;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(179, 18, 23, 0.2);
+        }
+
+        .service-card:hover i {
+            color: #3b82f6;
+            transform: scale(1.1);
+        }
+
+        /* ===== AWARENESS SECTION ===== */
+        .awareness-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 60px 20px;
+        }
+
+        .awareness-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            padding: 25px;
+            background: white;
+            border-left: 5px solid #1e40af;
+        }
+
+        .awareness-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15);
+        }
+
+        .awareness-card h5 {
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .awareness-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .awareness-icon {
+            font-size: 2.5rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== GUIDELINES SECTION ===== */
+        .guidelines-section {
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+        }
+
+        .guideline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .guideline-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
+        }
+
+        .guideline-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .guideline-content h6 {
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .guideline-content p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <!-- Round Image -->
+                <img src="https://images.unsplash.com/photo-1631053745666-5f3d88db46cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGVtZXJnZW5jeXxlbnwwfHwwfHx8MA%3D%3D" 
+                     alt="Logo" class="navbar-logo me-2">
+                Emergency Help Portal
+            </a>
+            
+      
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="safety.html">Safety Guidelines</a></li>
+               
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO / HOME ===== -->
+<section id="home" class="hero" data-aos="fade-down">
+    <div class="container">
+        <h1>Emergency Help Portal</h1>
+        <p class="lead mt-3">
+            Quick access to emergency services, safety guidance, and critical contact information when every second matters.
+        </p>
+        <a href="services.html" class="btn btn-light btn-lg m-2">Emergency Services</a>
+        <a href="" class="btn btn-outline-light btn-lg m-2">Emergency Contacts</a>
+    </div>
+</section>
+
+<!-- ===== EMERGENCY SERVICES ===== -->
+<section id="services" class="container py-5">
+    <h2 class="section-title">Emergency Services</h2>
+    <div class="row g-4">
+
+        <div class="col-md-3" data-aos="zoom-in">
+            <div class="card text-center service-card h-100">
+                <div class="card-body">
+                    <i class="fas fa-ambulance"></i>
+                    <h5>Ambulance</h5>
+                    <p>Immediate medical assistance during emergencies.</p>
+                    <strong>Call: 108</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3" data-aos="zoom-in">
+            <div class="card text-center service-card h-100">
+                <div class="card-body">
+                    <i class="fas fa-fire-extinguisher"></i>
+                    <h5>Fire Brigade</h5>
+                    <p>Rapid response to fire accidents.</p>
+                    <strong>Call: 101</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3" data-aos="zoom-in">
+            <div class="card text-center service-card h-100">
+                <div class="card-body">
+                    <i class="fas fa-shield-halved"></i>
+                    <h5>Police</h5>
+                    <p>Emergency support and public safety.</p>
+                    <strong>Call: 100</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3" data-aos="zoom-in">
+            <div class="card text-center service-card h-100">
+                <div class="card-body">
+                    <i class="fas fa-droplet"></i>
+                    <h5>Blood Donation</h5>
+                    <p>Urgent blood availability support.</p>
+                    <strong>Call: 1800-111-999</strong>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+<!-- JS FILES -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    $("#helpForm").submit(function(e){
+        e.preventDefault();
+        alert("Help request submitted successfully!");
+    });
+</script>
+
+</body>
+</html>
+
